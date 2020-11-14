@@ -1,15 +1,11 @@
 package com.mbds.bmp.newsletter.repositories
 
-import androidx.viewbinding.BuildConfig
 import com.mbds.bmp.newsletter.model.Article
 import com.mbds.bmp.newsletter.model.Category
+import com.mbds.bmp.newsletter.services.ArticleOnlineService
 import com.mbds.bmp.newsletter.services.ArticleService
 import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import okhttp3.Response
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ArticleRepository {
@@ -18,31 +14,14 @@ class ArticleRepository {
     private var maxpage = -1
 
     init {
-
-        val clientBulider = OkHttpClient.Builder()
-            .addInterceptor(AuthenticationInterceptor())
-
-        if (BuildConfig.DEBUG) {
-            val logging = HttpLoggingInterceptor()
-            logging.level = HttpLoggingInterceptor.Level.BODY
-            clientBulider.addInterceptor(logging)
-        }
-        val client = clientBulider.build()
-
-        val retrofit = Retrofit.Builder().apply {
-            baseUrl("https://newsapi.org/v2/")
-            client(client)
-            addConverterFactory(GsonConverterFactory.create())
-        }.build()
-
-        service = retrofit.create(ArticleService::class.java)
+        service = ArticleOnlineService()
     }
 
     class AuthenticationInterceptor: Interceptor{
         override fun intercept(chain: Interceptor.Chain): Response {
             var request = chain.request()
             val headers = request
-                .headers()
+                .headers
                 .newBuilder()
                 .add("Authorization", "Bearer 5a7700db7c2f43e3bbc789c5a2a655c8")
                 .build()
@@ -57,7 +36,7 @@ class ArticleRepository {
 
     fun list(category: Category): List<Article>? {
         if (maxpage < 0 || page < maxpage) {
-            val response = service.list(category.key, page).execute()
+            val response = service.getArticles(category.key, page)
             if (response.isSuccessful) {
                 maxpage = response.body()?.totalResults?.div(20) ?: maxpage
                 page++

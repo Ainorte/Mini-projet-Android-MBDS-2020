@@ -1,6 +1,6 @@
 package com.mbds.bmp.newsletter.services
 
-import com.mbds.bmp.newsletter.data.Data
+import com.mbds.bmp.newsletter.model.NewsApiResponse
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -64,8 +64,8 @@ class ArticleOnlineService : ArticleService {
         })
     }
 
-    override fun getArticles(): List<Data> {
-        return service.list().execute().body() ?: listOf()
+    override fun getArticles(category: String, page: Int): retrofit2.Response<NewsApiResponse> {
+        return service.list(category, page).execute()
     }
 
     companion object {

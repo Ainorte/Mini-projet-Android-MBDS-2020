@@ -4,10 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.databinding.ItemCategoryBinding
 import com.mbds.bmp.newsletter.fragments.ArticlesFragment
 import com.mbds.bmp.newsletter.model.Category
+import com.mbds.bmp.newsletter.tools.getName
+import com.mbds.bmp.newsletter.tools.setImageFromUrl
 
 
 class CategoryAdapter (private val dataSet: List<Category>)

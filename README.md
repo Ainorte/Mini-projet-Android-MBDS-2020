@@ -10,8 +10,3 @@ Réalisation du mini projet Android pour le MBDS 2021
 
 ## Lien utiles
 >[Sujet](https://github.com/eamosse/android-mbds-2020/blob/main/mini_projet.md)
-
-
-
-
-

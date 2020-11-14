@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.databinding.ItemArticleBinding
 import com.mbds.bmp.newsletter.model.Article
+import com.mbds.bmp.newsletter.tools.setImageFromUrl
 
 import java.util.*
 

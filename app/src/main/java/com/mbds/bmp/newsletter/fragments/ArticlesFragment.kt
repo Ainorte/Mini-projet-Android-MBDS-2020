@@ -50,7 +50,7 @@ class ArticlesFragment : Fragment() {
     ): View? {
         binding = FragmentArticlesBinding.inflate(inflater, container, false)
 
-        val recyclerView = binding.recyclerView
+        val recyclerView = binding.articlesView
 
         recyclerView.layoutManager = LinearLayoutManager(view?.context)
         recyclerView.hasFixedSize()
@@ -71,7 +71,7 @@ class ArticlesFragment : Fragment() {
             lifecycleScope.launch {
                 articleAdapter.dataSet.add(null)
                 articleAdapter.notifyItemInserted(articleAdapter.itemCount - 1)
-                binding.recyclerView.removeOnScrollListener(articlesScrollListener)
+                binding.articlesView.removeOnScrollListener(articlesScrollListener)
                 getData()
             }
         }
@@ -102,7 +102,7 @@ class ArticlesFragment : Fragment() {
             articleAdapter.dataSet.addAll(result)
             articleAdapter.notifyDataSetChanged()
 
-            binding.recyclerView.addOnScrollListener(articlesScrollListener)
+            binding.articlesView.addOnScrollListener(articlesScrollListener)
             isLoading = false
         }
     }
@@ -122,7 +122,7 @@ class ArticlesFragment : Fragment() {
 
             articleAdapter.dataSet.removeLast()
             articleAdapter.notifyItemRemoved(articleAdapter.itemCount)
-            binding.recyclerView.addOnScrollListener(articlesScrollListener)
+            binding.articlesView.addOnScrollListener(articlesScrollListener)
             isLoading = false
         }
     }
