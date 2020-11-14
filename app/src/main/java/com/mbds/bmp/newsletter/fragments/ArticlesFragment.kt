@@ -17,7 +17,7 @@ import com.mbds.bmp.newsletter.listener.ArticlesScrollListener
 import com.mbds.bmp.newsletter.model.Article
 import com.mbds.bmp.newsletter.model.Category
 import com.mbds.bmp.newsletter.repositories.ArticleRepository
-
+import com.mbds.bmp.newsletter.tools.isOnline
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
