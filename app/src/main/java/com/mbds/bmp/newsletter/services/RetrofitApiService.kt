@@ -1,6 +1,6 @@
 package com.mbds.bmp.newsletter.services
 
-import com.mbds.bmp.newsletter.data.Article
+import com.mbds.bmp.newsletter.data.Data
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -9,5 +9,5 @@ interface RetrofitApiService {
     // everything est l'action du web service qu'on veut apeler
     // Elle sera concaténée avec l'url prédéfini dans retrofit
     @GET("/everything")
-    fun list(): Call<List<Article>>
+    fun list(): Call<List<Data>>
 }

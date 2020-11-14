@@ -1,6 +1,6 @@
 package com.mbds.bmp.newsletter.services
 
-import com.mbds.bmp.newsletter.data.Article
+import com.mbds.bmp.newsletter.data.Data
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -64,7 +64,7 @@ class ArticleOnlineService : ArticleService {
         })
     }
 
-    override fun getArticles(): List<Article> {
+    override fun getArticles(): List<Data> {
         return service.list().execute().body() ?: listOf()
     }
 

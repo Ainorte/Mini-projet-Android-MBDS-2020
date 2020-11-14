@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Newsletter</string>
+    <string name="categories">Catégories</string>
+    <string name="politic">Politique</string>
+    <string name="economy">Économie</string>
+    <string name="education">Éducation</string>
+    <string name="pandemic">Pandémie</string>
+    <string name="sciences">Sciences</string>
+    <string name="ecology">Écologie</string>
+    <string name="all">Tous</string>
+    <string name="separator">•</string>
+    <string name="no_internet_error">Serveur de news inaccessible, veuiller vérifier votre connexion internet</string>
+    <string name="request_error">Une erreur s\'est produite, merci de réessayer ultérieurement</string>
+    <string name="retry">Réessayer</string>
 </resources>
