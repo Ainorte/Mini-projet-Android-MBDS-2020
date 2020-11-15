@@ -132,6 +132,8 @@ class ArticlesFragment : Fragment() {
         errorSnackBar?.dismiss()
     }
 
+
+
     companion object {
         private const val ARG_CATEGORY = "category"
 

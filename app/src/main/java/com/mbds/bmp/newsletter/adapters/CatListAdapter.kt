@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.databinding.ItemCategoryBinding
-import com.mbds.bmp.newsletter.fragments.ArticlesFragment
+import com.mbds.bmp.newsletter.fragments.CategoriesFragment
 import com.mbds.bmp.newsletter.model.Category
 import com.mbds.bmp.newsletter.tools.getName
 import com.mbds.bmp.newsletter.tools.setImageFromUrl
 
 
-class CategoryAdapter (private val dataSet: List<Category>)
-    : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CatListAdapter (private val dataSet: List<Category>)
+    : RecyclerView.Adapter<CatListAdapter.ViewHolder>() {
 
     class ViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {
 
@@ -25,10 +25,16 @@ class CategoryAdapter (private val dataSet: List<Category>)
             binding.categoryName.text = item.getName(root.context)
 
             binding.categoryItem.setOnClickListener {
-                val mainActivity = (root.context as MainActivity)
-                mainActivity.changeFragment(ArticlesFragment.newInstance(item))
+
+                if (item.nameId == R.string.Catégories) {
+                    val mainActivity = (root.context as MainActivity)
+                    mainActivity.changeFragment(CategoriesFragment(), false)
+                }
             }
         }
+
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
