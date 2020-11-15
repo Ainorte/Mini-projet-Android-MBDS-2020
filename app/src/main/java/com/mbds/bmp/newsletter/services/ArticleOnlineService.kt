@@ -64,7 +64,11 @@ class ArticleOnlineService : ArticleService {
         })
     }
 
-    override fun getArticles(category: String, page: Int): retrofit2.Response<NewsApiResponse> {
+    override fun getArticles(
+        category: String,
+        country: String,
+        page: Int
+    ): retrofit2.Response<NewsApiResponse> {
         return service.list(category, page).execute()
     }
 

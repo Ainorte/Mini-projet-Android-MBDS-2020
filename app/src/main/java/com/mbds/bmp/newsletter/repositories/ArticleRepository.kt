@@ -2,6 +2,7 @@ package com.mbds.bmp.newsletter.repositories
 
 import com.mbds.bmp.newsletter.model.Article
 import com.mbds.bmp.newsletter.model.Category
+import com.mbds.bmp.newsletter.model.Country
 import com.mbds.bmp.newsletter.services.ArticleOnlineService
 import com.mbds.bmp.newsletter.services.ArticleService
 import okhttp3.Interceptor
@@ -34,9 +35,9 @@ class ArticleRepository {
 
     }
 
-    fun list(category: Category): List<Article>? {
+    fun list(category: Category, country: Country): List<Article>? {
         if (maxpage < 0 || page < maxpage) {
-            val response = service.getArticles(category.key, page)
+            val response = service.getArticles(category.key, country.key, page)
             if (response.isSuccessful) {
                 maxpage = response.body()?.totalResults?.div(20) ?: maxpage
                 page++

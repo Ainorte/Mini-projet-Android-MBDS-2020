@@ -8,8 +8,11 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
 import com.mbds.bmp.newsletter.model.Category
+import com.mbds.bmp.newsletter.model.Country
 
 fun Category.getName(context: Context) = context.getString(nameId)
+
+fun Country.getName(context: Context) = context.getString(nameId)
 
 fun ImageView.setImageFromUrl(imageUrl: String, @DrawableRes placeholder: Int, root: View) =
     Glide.with(root)

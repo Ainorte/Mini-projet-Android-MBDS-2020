@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="5dp"
+    android:padding="5dp"
+    android:layout_margin="10dp"
+    android:id="@+id/pays_item"
+    android:shadowColor="@color/black"
+    android:shadowDx="1"
+    android:shadowDy="1"
+    android:shadowRadius="5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/placeholder_category"
+            android:maxHeight="50dp"
+            android:id="@+id/pays_image" />
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/pays_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/pays_image"
+            app:layout_constraintEnd_toEndOf="@id/pays_image"
+            app:layout_constraintTop_toTopOf="@id/pays_image"
+            app:layout_constraintBottom_toBottomOf="@id/pays_image"
+            tools:text="Pays"
+            android:shadowColor="@color/black"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

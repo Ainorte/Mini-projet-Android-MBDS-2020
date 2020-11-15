@@ -4,7 +4,7 @@ import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.model.Category
 
 
-class CategorieData {
+class HomeData {
     companion object {
         fun getCategoryList() = listOf<Category>(
             Category(R.string.Editeurs, "politic","https://live.staticflickr.com/6053/7003137491_6fdea157f6_b.jpg"),
