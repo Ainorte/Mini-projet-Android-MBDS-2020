@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/article_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
-    android:padding="5dp"
     android:layout_margin="10dp"
+    android:background="@color/white"
+    android:padding="5dp"
     android:shadowColor="@color/black"
     android:shadowDx="1"
     android:shadowDy="1"
-    android:background="@color/white"
-    android:shadowRadius="5">
+    android:shadowRadius="5"
+    app:cardCornerRadius="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,13 +20,13 @@
         android:background="@color/white">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/article_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/article_image"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/article_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/placeholder_article" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -37,77 +37,76 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="2dp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@id/article_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/article_image"
-            android:textColor="@color/black"
             tools:text="Titre" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_description"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Description"
-            android:id="@+id/article_description"
-            app:layout_constraintTop_toBottomOf="@id/article_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/article_source"
-            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="2dp"
             android:justificationMode="inter_word"
             android:textColor="@color/light_gray"
-            />
+            app:layout_constraintBottom_toBottomOf="@id/article_source"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/article_title"
+            tools:text="Description" />
+
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_source"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/article_source"
-            app:layout_constraintTop_toBottomOf="@id/article_description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/separator"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="2dp"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:textSize="10sp"
             android:textColor="@color/light_gray"
-            tools:text="Source"/>
+            android:textSize="10sp"
+            app:layout_constraintEnd_toStartOf="@id/separator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/article_description"
+            tools:text="Source" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/separator"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/separator"
-            app:layout_constraintTop_toBottomOf="@id/article_description"
-            app:layout_constraintStart_toEndOf="@id/article_source"
+            android:layout_marginHorizontal="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/separator"
+            android:textColor="@color/light_gray"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/article_date"
-            android:layout_marginHorizontal="2dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="2dp"
-            android:text="@string/separator"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:textSize="10sp"
-            android:textColor="@color/light_gray"
-            />
+            app:layout_constraintStart_toEndOf="@id/article_source"
+            app:layout_constraintTop_toBottomOf="@id/article_description" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_date"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/article_date"
-            app:layout_constraintTop_toBottomOf="@id/article_description"
-            app:layout_constraintStart_toEndOf="@id/separator"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="2dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/separator"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            tools:text="Date"
-            android:textSize="10sp"
             android:textColor="@color/light_gray"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/separator"
+            app:layout_constraintTop_toBottomOf="@id/article_description"
+            tools:text="Date"
 
             />
     </androidx.constraintlayout.widget.ConstraintLayout>

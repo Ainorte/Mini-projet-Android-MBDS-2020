@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.databinding.ItemArticleBinding
+import com.mbds.bmp.newsletter.fragments.ArticleFragment
 import com.mbds.bmp.newsletter.model.Article
 import com.mbds.bmp.newsletter.tools.setImageFromUrl
-
 import java.util.*
 
 class ArticleAdapter(val dataSet: MutableList<Article?>) :
@@ -61,12 +62,16 @@ class ArticleAdapter(val dataSet: MutableList<Article?>) :
                 DateUtils.MINUTE_IN_MILLIS,
                 FORMAT_ABBREV_RELATIVE
             )
-            if (!item.urlToImage.isNullOrBlank())
-                binding.articleImage.setImageFromUrl(
-                    item.urlToImage,
-                    R.drawable.placeholder_article,
-                    root
-                )
+            binding.articleImage.setImageFromUrl(
+                item.urlToImage ?: "",
+                R.drawable.placeholder_article,
+                root
+            )
+
+            binding.articleCard.setOnClickListener {
+                val mainActivity = (root.context as MainActivity)
+                mainActivity.changeFragment(ArticleFragment.newInstance(item))
+            }
         }
     }
 

@@ -15,4 +15,5 @@
     <string name="no_internet_error">Serveur de news inaccessible, veuiller vérifier votre connexion internet</string>
     <string name="request_error">Une erreur s\'est produite, merci de réessayer ultérieurement</string>
     <string name="retry">Réessayer</string>
+    <string name="by">Par</string>
 </resources>

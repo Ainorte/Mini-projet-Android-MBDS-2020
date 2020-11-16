@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
+import com.mbds.bmp.newsletter.model.Article
 import com.mbds.bmp.newsletter.model.Category
 import com.mbds.bmp.newsletter.model.Country
 
@@ -27,3 +28,5 @@ fun Context.isOnline(): Boolean {
     val networkCapabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
     return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
 }
+
+fun Article.getCleanContent() = content.replace(Regex("\\[\\+[0-9]+ chars]$"), "")
