@@ -1,9 +1,13 @@
 package com.mbds.bmp.newsletter.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.databinding.FragmentArticleBinding
@@ -28,13 +32,44 @@ class ArticleFragment : Fragment() {
     ): View? {
         binding = FragmentArticleBinding.inflate(inflater, container, false)
 
-        binding.author.text = article?.author
+        if (article?.author.isNullOrBlank()) {
+            //Hide author data
+            binding.author.visibility = View.INVISIBLE
+            binding.byAuthor.visibility = View.INVISIBLE
+            binding.authorDateSeparator.visibility = View.INVISIBLE
+
+            //Patch centering
+            val dateLayoutParams = binding.date.layoutParams as ConstraintLayout.LayoutParams
+            dateLayoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+            binding.date.requestLayout()
+        } else {
+            binding.author.text = article?.author
+        }
         binding.content.text = article?.getCleanContent()
         binding.description.text = article?.description
-        binding.date.text = article?.publishedAt?.toString()
+
+        article?.publishedAt?.let {
+            binding.date.text = DateUtils.formatDateTime(
+                this.context, it.time,
+                DateUtils.FORMAT_SHOW_TIME or DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_YEAR or DateUtils.FORMAT_SHOW_WEEKDAY or DateUtils.FORMAT_ABBREV_ALL
+            )
+        } ?: run {
+            //Hide date data
+            binding.date.visibility = View.INVISIBLE
+            binding.authorDateSeparator.visibility = View.INVISIBLE
+
+            //Patch centering
+            val authorLayoutParams = binding.author.layoutParams as ConstraintLayout.LayoutParams
+            authorLayoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
+            binding.author.requestLayout()
+        }
+
         binding.source.text = article?.source?.name
         binding.title.text = article?.title
-        binding.url.text = article?.url
+        binding.articleLink.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(article?.url))
+            startActivity(intent)
+        }
         binding.image.setImageFromUrl(
             article?.urlToImage ?: "",
             R.drawable.placeholder_article,

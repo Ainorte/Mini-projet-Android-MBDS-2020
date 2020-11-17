@@ -16,4 +16,5 @@
     <string name="request_error">Une erreur s\'est produite, merci de réessayer ultérieurement</string>
     <string name="retry">Réessayer</string>
     <string name="by">Par</string>
+    <string name="read_all">Lire l\'article complet</string>
 </resources>
