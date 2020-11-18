@@ -8,6 +8,7 @@ import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.databinding.ItemCategoryBinding
 import com.mbds.bmp.newsletter.fragments.CategoriesFragment
+import com.mbds.bmp.newsletter.fragments.CountriesFragment
 import com.mbds.bmp.newsletter.model.Category
 import com.mbds.bmp.newsletter.tools.getName
 import com.mbds.bmp.newsletter.tools.setImageFromUrl
@@ -23,12 +24,14 @@ class CatListAdapter (private val dataSet: List<Category>)
         fun bind(item: Category) {
             binding.categoryImage.setImageFromUrl(item.image, R.drawable.placeholder_category, root)
             binding.categoryName.text = item.getName(root.context)
-
             binding.categoryItem.setOnClickListener {
 
                 if (item.nameId == R.string.Catégories) {
                     val mainActivity = (root.context as MainActivity)
                     mainActivity.changeFragment(CategoriesFragment(), false)
+                }else if (item.nameId == R.string.countries){
+                    val mainActivity = (root.context as MainActivity)
+                    mainActivity.changeFragment(CountriesFragment(), false)
                 }
             }
         }

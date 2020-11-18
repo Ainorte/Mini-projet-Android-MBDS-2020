@@ -11,7 +11,7 @@ class Data {
         fun getCountryList() = listOf<Country>( //TODO : mettre les bons pays
             Country(R.string.Editeurs, "politic","https://live.staticflickr.com/6053/7003137491_6fdea157f6_b.jpg"),
             Country(R.string.Catégories, "economy","https://cdn.pixabay.com/photo/2017/08/16/15/28/stock-exchange-2648118_1280.jpg"),
-            Country(R.string.pays, "ecologic","https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTo3G8ojfWSwUpfbOD5iTgVbTvAoNFtQosyUA&usqp=CAU"))
+            Country(R.string.countries, "ecologic","https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTo3G8ojfWSwUpfbOD5iTgVbTvAoNFtQosyUA&usqp=CAU"))
 
         fun getCategoryList() = listOf<Category>(
             Category(R.string.politic, "politic","https://live.staticflickr.com/6053/7003137491_6fdea157f6_b.jpg"),

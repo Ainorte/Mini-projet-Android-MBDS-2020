@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
 
-import com.mbds.bmp.newsletter.databinding.ItemPaysBinding
+import com.mbds.bmp.newsletter.databinding.ItemCountryBinding
 import com.mbds.bmp.newsletter.fragments.ArticlesFragment
 import com.mbds.bmp.newsletter.model.Category
 import com.mbds.bmp.newsletter.model.Country
@@ -20,24 +20,24 @@ class CountryAdapter (private val dataSet: List<Country>)
 
     class ViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {
 
-        internal lateinit var binding: ItemPaysBinding
+        internal lateinit var binding: ItemCountryBinding
 
         fun bind(item: Country) {
-            binding.paysImage.setImageFromUrl(item.image, R.drawable.placeholder_category, root)
-            binding.paysName.text = item.getName(root.context)
-
-            binding.paysItem.setOnClickListener {
+            binding.countryImage.setImageFromUrl(item.image, R.drawable.placeholder_category, root)
+            binding.countryName.text = item.getName(root.context)
+            binding.countryItem.setOnClickListener {
                 val mainActivity = (root.context as MainActivity)
                 mainActivity.changeFragment(ArticlesFragment.newInstance(Category(0, "", ""), item))
+
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val rootView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_category, parent, false)
+            .inflate(R.layout.item_country, parent, false)
         val viewHolder = ViewHolder(rootView)
-        viewHolder.binding = ItemPaysBinding.bind(rootView)
+        viewHolder.binding = ItemCountryBinding.bind(rootView)
         return viewHolder
     }
 

@@ -9,26 +9,26 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.adapters.CountryAdapter
 import com.mbds.bmp.newsletter.data.Data
-import com.mbds.bmp.newsletter.databinding.FragmentPaysBinding
+import com.mbds.bmp.newsletter.databinding.FragmentCountriesBinding
 
 
 class CountriesFragment: Fragment() {
 
-    lateinit var binding: FragmentPaysBinding
+    lateinit var binding: FragmentCountriesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPaysBinding.inflate(inflater, container, false)
+        binding = FragmentCountriesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //On creer la liste des categories et on l'affiche dans le fragment
+        //On creer la liste des pays et on l'affiche dans le fragment
 
         val recyclerView = binding.recyclerView
         val countries = Data.getCountryList()
@@ -38,7 +38,7 @@ class CountriesFragment: Fragment() {
         recyclerView.hasFixedSize()
         recyclerView.adapter = countriesAdapter
 
-        activity?.setTitle(R.string.categories)
+        activity?.setTitle(R.string.countries)
 
 
 

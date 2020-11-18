@@ -9,7 +9,7 @@
     <string name="ecology">Écologie</string>
     <string name="Editeurs">Editeurs</string>
     <string name="Catégories">Catégories</string>
-    <string name="pays">pays</string>
+    <string name="countries">pays</string>
     <string name="all">Tous</string>
     <string name="separator">•</string>
     <string name="no_internet_error">Serveur de news inaccessible, veuiller vérifier votre connexion internet</string>
