@@ -72,7 +72,7 @@ class ArticleFragment : Fragment() {
         }
         binding.image.setImageFromUrl(
             article?.urlToImage ?: "",
-            R.drawable.placeholder_article,
+            R.drawable.placeholder_large,
             binding.root
         )
 

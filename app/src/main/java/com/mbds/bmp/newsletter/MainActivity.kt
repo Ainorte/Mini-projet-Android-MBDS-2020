@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.mbds.bmp.newsletter.databinding.ActivityMainBinding
-import com.mbds.bmp.newsletter.fragments.CatListFragment
-import com.mbds.bmp.newsletter.fragments.CategoriesFragment
+import com.mbds.bmp.newsletter.fragments.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(LayoutInflater.from(baseContext))
 
-        changeFragment(CatListFragment(), false)
+        changeFragment(HomeFragment(), false)
     }
 
     fun changeFragment(fragment: Fragment, addToBackStack: Boolean = true) {

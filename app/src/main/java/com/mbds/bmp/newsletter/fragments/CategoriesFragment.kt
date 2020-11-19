@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.adapters.CategoryAdapter
 import com.mbds.bmp.newsletter.data.Data
-import com.mbds.bmp.newsletter.databinding.FragmentCategoriesBinding
+import com.mbds.bmp.newsletter.databinding.FragmentSelectorsBinding
 
 
 class CategoriesFragment: Fragment() {
 
-    lateinit var binding: FragmentCategoriesBinding
+    lateinit var binding: FragmentSelectorsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCategoriesBinding.inflate(inflater, container, false)
+        binding = FragmentSelectorsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

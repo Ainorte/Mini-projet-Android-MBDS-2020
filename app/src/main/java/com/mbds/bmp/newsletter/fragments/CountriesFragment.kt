@@ -9,19 +9,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.adapters.CountryAdapter
 import com.mbds.bmp.newsletter.data.Data
-import com.mbds.bmp.newsletter.databinding.FragmentCountriesBinding
-
+import com.mbds.bmp.newsletter.databinding.FragmentSelectorsBinding
 
 class CountriesFragment: Fragment() {
 
-    lateinit var binding: FragmentCountriesBinding
+    lateinit var binding: FragmentSelectorsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCountriesBinding.inflate(inflater, container, false)
+        binding = FragmentSelectorsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

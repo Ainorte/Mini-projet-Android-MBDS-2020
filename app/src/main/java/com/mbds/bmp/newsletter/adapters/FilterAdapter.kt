@@ -7,26 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.databinding.ItemSelectorBinding
-import com.mbds.bmp.newsletter.fragments.ArticlesFragment
-import com.mbds.bmp.newsletter.model.Category
-import com.mbds.bmp.newsletter.model.Country
+import com.mbds.bmp.newsletter.model.Filter
 import com.mbds.bmp.newsletter.tools.setImageFromUrl
 
-
-class CountryAdapter (private val dataSet: List<Country>)
-    : RecyclerView.Adapter<CountryAdapter.ViewHolder>() {
+class FilterAdapter(private val dataSet: List<Filter>) :
+    RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
 
     class ViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {
 
         internal val binding = ItemSelectorBinding.bind(root)
 
-        fun bind(item: Country) {
+        fun bind(item: Filter) {
             binding.image.setImageFromUrl(item.image, R.drawable.placeholder_small, root)
             binding.name.text = root.context.getText(item.nameId)
 
             binding.item.setOnClickListener {
                 val mainActivity = (root.context as MainActivity)
-                mainActivity.changeFragment(ArticlesFragment.newInstance(Category(0, "", ""), item))
+                mainActivity.changeFragment(item.fragment)
             }
         }
     }

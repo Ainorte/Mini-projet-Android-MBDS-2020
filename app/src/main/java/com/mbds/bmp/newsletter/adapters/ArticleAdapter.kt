@@ -32,9 +32,7 @@ class ArticleAdapter(val dataSet: MutableList<Article?>) :
             val rootView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_article, parent, false)
 
-            val viewHolder = ArticleViewHolder(rootView)
-            viewHolder.binding = ItemArticleBinding.bind(rootView)
-            return viewHolder
+            return ArticleViewHolder(rootView)
         }
     }
 
@@ -50,7 +48,7 @@ class ArticleAdapter(val dataSet: MutableList<Article?>) :
 
     class ArticleViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {
 
-        internal lateinit var binding: ItemArticleBinding
+        internal val binding = ItemArticleBinding.bind(root)
 
         fun bind(item: Article) {
             binding.articleTitle.text = item.title
@@ -64,7 +62,7 @@ class ArticleAdapter(val dataSet: MutableList<Article?>) :
             )
             binding.articleImage.setImageFromUrl(
                 item.urlToImage ?: "",
-                R.drawable.placeholder_article,
+                R.drawable.placeholder_large,
                 root
             )
 

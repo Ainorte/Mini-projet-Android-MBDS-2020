@@ -9,7 +9,7 @@
         android:id="@+id/article"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/article_link"
+        app:layout_constraintBottom_toTopOf="@id/separator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +25,8 @@
                 style="@style/TextAppearance.MaterialComponents.Headline4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="20dp"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="15dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@id/author_date"
@@ -65,8 +65,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
+                    android:maxEms="10"
                     android:paddingHorizontal="5dp"
                     android:paddingStart="2dp"
+                    android:singleLine="true"
                     android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/author_date_separator"
@@ -119,7 +121,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/source"
-                tools:src="@drawable/placeholder_article" />
+                tools:src="@drawable/placeholder_large" />
 
 
             <com.google.android.material.textview.MaterialTextView
@@ -153,15 +155,27 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/light_gray"
+        app:layout_constraintBottom_toTopOf="@id/article_link"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/article" />
+
     <com.google.android.material.button.MaterialButton
 
         android:id="@+id/article_link"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
         android:drawableEnd="@drawable/outline_launch_24"
         android:text="@string/read_all"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/article" />
+        app:layout_constraintTop_toBottomOf="@id/separator" />
 </androidx.constraintlayout.widget.ConstraintLayout>
