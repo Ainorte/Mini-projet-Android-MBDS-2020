@@ -3,12 +3,13 @@
     <string name="categories">Catégories</string>
     <string name="pays">pays</string>
     <string name="all">Tout</string>
-    <string name="politic">Politique</string>
-    <string name="economy">Économie</string>
-    <string name="education">Éducation</string>
-    <string name="pandemic">Pandémie</string>
+    <string name="entertainment">People</string>
+    <string name="business">Économie</string>
+    <string name="general">Général</string>
+    <string name="health">Santé</string>
     <string name="sciences">Sciences</string>
-    <string name="ecology">Écologie</string>
+    <string name="sports">Sport</string>
+    <string name="technology">Tech</string>
     <string name="editors">Editeurs</string>
     <string name="separator">•</string>
     <string name="no_internet_error">Serveur de news inaccessible, veuiller vérifier votre connexion internet</string>
@@ -17,16 +18,6 @@
     <string name="by">Par</string>
     <string name="read_all">Lire l\'article complet</string>
     <string name="countries">Pays</string>
-    <string name="arab">Arabe</string>
-    <string name="german">Allemand</string>
-    <string name="english">Anglais</string>
-    <string name="spanish">Espagnol</string>
-    <string name="french">Français</string>
-    <string name="hebrew">Hebreu</string>
-    <string name="italian">Italien</string>
-    <string name="dutch">Hollandais</string>
-    <string name="norwegian">Norvégien</string>
-    <string name="portuguese">Portugais</string>
-    <string name="russian">Russe</string>
-    <string name="chinese">Chinois</string>
+    <string name="results">Résultats</string>
+    <string name="select_countries">Sélctionner les pays</string>
 </resources>

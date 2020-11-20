@@ -17,6 +17,7 @@ import com.mbds.bmp.newsletter.listener.ArticlesScrollListener
 import com.mbds.bmp.newsletter.model.Article
 import com.mbds.bmp.newsletter.model.Category
 import com.mbds.bmp.newsletter.model.Country
+import com.mbds.bmp.newsletter.model.Editor
 import com.mbds.bmp.newsletter.repositories.ArticleRepository
 import com.mbds.bmp.newsletter.tools.isOnline
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +29,7 @@ class ArticlesFragment : Fragment() {
     lateinit var binding: FragmentArticlesBinding
     private var category: Category? = null
     private var country: Country? = null
+    private var editor: Editor? = null
     private val articleRepository = ArticleRepository()
     private val articleAdapter = ArticleAdapter(mutableListOf())
     private val articlesScrollListener = ArticlesScrollListener()
@@ -41,10 +43,10 @@ class ArticlesFragment : Fragment() {
         arguments?.let {
             category = it.getSerializable(ARG_CATEGORY) as Category
             country = it.getSerializable(ARG_COUNTRY) as Country
+            editor = it.getSerializable(ARG_EDITOR) as Editor
         }
 
-        val categoryId = category?.nameId ?: R.string.all
-        activity?.setTitle(categoryId)
+        activity?.setTitle(R.string.results)
     }
 
     override fun onCreateView(
@@ -84,7 +86,7 @@ class ArticlesFragment : Fragment() {
         withContext(Dispatchers.IO)
         {
             if (context?.isOnline() == true) {
-                val result = articleRepository.list(category ?: Category(0, "", ""), country ?: Country(0, "", ""))
+                val result = articleRepository.list(category, country, editor)
                 if (result != null) {
                     bindData(result)
                 } else {
@@ -139,14 +141,22 @@ class ArticlesFragment : Fragment() {
 
     companion object {
         private const val ARG_CATEGORY = "category"
-        private const val ARG_COUNTRY ="country"
+        private const val ARG_COUNTRY = "country"
+        private const val ARG_EDITOR = "editor"
 
         @JvmStatic
-        fun newInstance(category: Category, country: Country) =
+        fun newInstance(category: Category?, country: Country?, editor: Editor) =
             ArticlesFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(ARG_CATEGORY, category)
-                    putSerializable(ARG_COUNTRY, country)
+                    category.let {
+                        putSerializable(ARG_CATEGORY, it)
+                    }
+                    country.let {
+                        putSerializable(ARG_COUNTRY, it)
+                    }
+                    editor.let {
+                        putSerializable(ARG_EDITOR, it)
+                    }
                 }
             }
     }

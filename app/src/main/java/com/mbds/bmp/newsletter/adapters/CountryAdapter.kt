@@ -6,11 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
-import com.mbds.bmp.newsletter.databinding.ItemSelectorBinding
-import com.mbds.bmp.newsletter.fragments.ArticlesFragment
-import com.mbds.bmp.newsletter.model.Category
+import com.mbds.bmp.newsletter.databinding.ItemCategoryBinding
+import com.mbds.bmp.newsletter.fragments.EditorsFragment
 import com.mbds.bmp.newsletter.model.Country
-import com.mbds.bmp.newsletter.tools.setImageFromUrl
 
 
 class CountryAdapter (private val dataSet: List<Country>)
@@ -18,22 +16,23 @@ class CountryAdapter (private val dataSet: List<Country>)
 
     class ViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {
 
-        internal val binding = ItemSelectorBinding.bind(root)
+        internal val binding = ItemCategoryBinding.bind(root)
 
         fun bind(item: Country) {
-            binding.image.setImageFromUrl(item.image, R.drawable.placeholder_small, root)
-            binding.name.text = root.context.getText(item.nameId)
+
+            binding.image.setImageDrawable(item.getFlag(root.context))
+            binding.name.text = item.getName(root.context)
 
             binding.item.setOnClickListener {
                 val mainActivity = (root.context as MainActivity)
-                mainActivity.changeFragment(ArticlesFragment.newInstance(Category(0, "", ""), item))
+                mainActivity.changeFragment(EditorsFragment())
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val rootView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_selector, parent, false)
+            .inflate(R.layout.item_category, parent, false)
         return ViewHolder(rootView)
     }
 

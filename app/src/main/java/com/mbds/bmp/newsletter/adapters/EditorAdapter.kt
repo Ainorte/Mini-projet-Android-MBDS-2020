@@ -6,31 +6,29 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
-import com.mbds.bmp.newsletter.databinding.ItemSelectorBinding
-import com.mbds.bmp.newsletter.model.Filter
-import com.mbds.bmp.newsletter.tools.setImageFromUrl
+import com.mbds.bmp.newsletter.databinding.ItemEditorBinding
+import com.mbds.bmp.newsletter.model.Editor
 
-class FilterAdapter(private val dataSet: List<Filter>) :
-    RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
+class EditorAdapter(private val dataSet: List<Editor>) :
+    RecyclerView.Adapter<EditorAdapter.ViewHolder>() {
 
     class ViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {
 
-        internal val binding = ItemSelectorBinding.bind(root)
+        internal val binding = ItemEditorBinding.bind(root)
 
-        fun bind(item: Filter) {
-            binding.image.setImageFromUrl(item.image, R.drawable.placeholder_small, root)
-            binding.name.text = root.context.getText(item.nameId)
+        fun bind(item: Editor) {
+            binding.name.text = item.name
 
             binding.item.setOnClickListener {
                 val mainActivity = (root.context as MainActivity)
-                mainActivity.changeFragment(item.fragment)
+                //mainActivity.changeFragment()
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val rootView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_selector, parent, false)
+            .inflate(R.layout.item_category, parent, false)
         return ViewHolder(rootView)
     }
 

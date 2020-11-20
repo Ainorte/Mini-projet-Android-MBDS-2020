@@ -1,6 +1,6 @@
 package com.mbds.bmp.newsletter.services
 
-import com.mbds.bmp.newsletter.model.NewsApiResponse
+import com.mbds.bmp.newsletter.model.ArticleNewsApiResponse
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -68,8 +68,8 @@ class ArticleOnlineService : ArticleService {
         category: String,
         country: String,
         page: Int
-    ): retrofit2.Response<NewsApiResponse> {
-        return service.list(category, page).execute()
+    ): retrofit2.Response<ArticleNewsApiResponse> {
+        return service.list(category, page, country).execute()
     }
 
     companion object {

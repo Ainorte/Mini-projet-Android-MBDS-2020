@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.adapters.CountryAdapter
 import com.mbds.bmp.newsletter.data.Data
@@ -33,7 +33,7 @@ class CountriesFragment: Fragment() {
         val countries = Data.getCountryList()
         val countriesAdapter = CountryAdapter(countries)
 
-        recyclerView.layoutManager = GridLayoutManager(view.context, 2)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
         recyclerView.hasFixedSize()
         recyclerView.adapter = countriesAdapter
 
