@@ -11,7 +11,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/item"
+        android:id="@+id/category_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -31,7 +31,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image"
+                android:id="@+id/category_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:maxHeight="50dp"
@@ -41,7 +41,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/name"
+                android:id="@+id/category_name"
                 style="@style/TextAppearance.AppCompat.Display1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,10 +50,10 @@
                 android:shadowDy="1"
                 android:shadowRadius="5"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/image"
-                app:layout_constraintEnd_toEndOf="@id/image"
-                app:layout_constraintStart_toStartOf="@id/image"
-                app:layout_constraintTop_toTopOf="@id/image"
+                app:layout_constraintBottom_toBottomOf="@id/category_image"
+                app:layout_constraintEnd_toEndOf="@id/category_image"
+                app:layout_constraintStart_toStartOf="@id/category_image"
+                app:layout_constraintTop_toTopOf="@id/category_image"
                 tools:text="Category" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

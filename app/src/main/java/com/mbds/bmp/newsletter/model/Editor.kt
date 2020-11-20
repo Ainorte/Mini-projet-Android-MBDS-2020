@@ -1,8 +1,11 @@
 package com.mbds.bmp.newsletter.model
 
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import com.mbds.bmp.newsletter.BR
 import java.io.Serializable
 
-class Editor(
+data class Editor(
     val id: String,
     val name: String,
     val description: String,
@@ -10,4 +13,11 @@ class Editor(
     val category: String,
     val language: String,
     val country: String
-) : Serializable
+) : BaseObservable(), Serializable {
+    var active = false
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.active)
+        }
+}

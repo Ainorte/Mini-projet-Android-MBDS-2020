@@ -52,15 +52,15 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="2dp"
+            android:ellipsize="end"
             android:justificationMode="inter_word"
+            android:maxLines="3"
+            android:minLines="1"
             android:textColor="@color/light_gray"
             app:layout_constraintBottom_toBottomOf="@id/article_source"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/article_title"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:minLines="1"
 
             tools:text="Description" />
 

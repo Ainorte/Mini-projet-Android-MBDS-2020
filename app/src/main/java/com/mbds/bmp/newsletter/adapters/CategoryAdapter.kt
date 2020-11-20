@@ -19,11 +19,12 @@ class CategoryAdapter (private val dataSet: List<Category>)
 
         fun bind(item: Category) {
             binding.category = item
-            binding.image.setImageFromUrl(item.image, R.drawable.placeholder_small, root)
-            binding.name.text = root.context.getText(item.nameId)
+            binding.categoryImage.setImageFromUrl(item.image, R.drawable.placeholder_small, root)
+            binding.categoryName.text = root.context.getText(item.nameId)
 
-            binding.item.setOnClickListener {
+            binding.categoryCard.setOnClickListener {
                 if (item.key.isNullOrBlank()) {
+                    //Set reverse of All box to everyone
                     val newValue = !item.active
                     dataSet.forEach { category ->
                         category.active = newValue
@@ -31,10 +32,13 @@ class CategoryAdapter (private val dataSet: List<Category>)
                 } else {
                     item.active = !item.active
 
+                    //Check new state of "All" box
                     val newValueForNullChecked =
                         dataSet.filter { category -> !category.key.isNullOrBlank() }
                             .map { category -> category.active }
                             .reduce { cat1, cat2 -> cat1 && cat2 }
+
+                    //Set new value of "All" box
                     dataSet.filter { category -> category.key.isNullOrBlank() }
                         .forEach { category -> category.active = newValueForNullChecked }
                 }

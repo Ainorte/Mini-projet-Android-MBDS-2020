@@ -50,6 +50,7 @@ class CategoriesFragment: Fragment() {
         val categoriesAdapter = CategoryAdapter(categories)
 
         recyclerView.layoutManager = GridLayoutManager(view.context, 2)
+        recyclerView.tag = R.layout.item_category
         recyclerView.hasFixedSize()
         recyclerView.adapter = categoriesAdapter
 
@@ -61,8 +62,9 @@ class CategoriesFragment: Fragment() {
     }
 
     private fun goToNextSelector() {
+        //Go To Countries Fragment
         val result = categories.filter { category -> !category.key.isNullOrBlank() }
         val mainActivity = activity as MainActivity
-        mainActivity.changeFragment(CountriesFragment())
+        mainActivity.changeFragment(CountriesFragment.newInstance(result))
     }
 }

@@ -19,5 +19,6 @@
     <string name="read_all">Lire l\'article complet</string>
     <string name="countries">Pays</string>
     <string name="results">Résultats</string>
-    <string name="select_countries">Sélctionner les pays</string>
+    <string name="select_countries">Sélectionner les pays</string>
+    <string name="select_editors">Sélectionner les éditeurs</string>
 </resources>
