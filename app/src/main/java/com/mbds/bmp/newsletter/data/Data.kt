@@ -1,8 +1,10 @@
 package com.mbds.bmp.newsletter.data
 
+import android.content.Context
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.model.Category
 import com.mbds.bmp.newsletter.model.Country
+import com.mbds.bmp.newsletter.model.Editor
 import com.neovisionaries.i18n.CountryCode
 
 class Data {
@@ -106,5 +108,8 @@ class Data {
             Country(CountryCode.VE),
             Country(CountryCode.ZA)
         )
+
+        fun getEditorForAll(context: Context) =
+            Editor(null, context.getString(R.string.all), "", "", "", "", "")
     }
 }

@@ -24,25 +24,8 @@ class CountryAdapter(private val dataSet: List<Country>) :
             binding.countryName.text = item.getName(root.context)
 
             binding.countryCard.setOnClickListener {
-                if (item.countryCode == null) {
-                    //Set reverse of All box to everyone
-                    val newValue = !item.active
-                    dataSet.forEach { country ->
-                        country.active = newValue
-                    }
-                } else {
-                    item.active = !item.active
-
-                    //Check new state of "All" box
-                    val newValueForNullChecked =
-                        dataSet.filter { country -> country.countryCode != null }
-                            .map { country -> country.active }
-                            .reduce { c1, c2 -> c1 && c2 }
-
-                    //Set new value of "All" box
-                    dataSet.filter { country -> country.countryCode == null }
-                        .forEach { country -> country.active = newValueForNullChecked }
-                }
+                dataSet.forEach { country -> country.active = false }
+                item.active = true
             }
         }
     }

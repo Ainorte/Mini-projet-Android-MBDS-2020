@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.Observable
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mbds.bmp.newsletter.MainActivity
@@ -17,8 +16,8 @@ import com.mbds.bmp.newsletter.model.Category
 
 class CategoriesFragment: Fragment() {
 
-    lateinit var binding: FragmentSelectorsBinding
-    lateinit var categories: List<Category>
+    private lateinit var binding: FragmentSelectorsBinding
+    private lateinit var categories: List<Category>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,21 +31,11 @@ class CategoriesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //On creer la liste des categories et on l'affiche dans le fragment
+        //create and bind list of categories
 
         val recyclerView = binding.recyclerView
         categories = Data.getCategoryList()
-        categories.forEach { category ->
-            category.active = true
-
-            //listen change on category to block button when no category is selected.
-            category.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-                override fun onPropertyChanged(observable: Observable, i: Int) {
-                    binding.nextButton.isEnabled = categories.map { category -> category.active }
-                        .reduce { cat1, cat2 -> cat1 || cat2 }
-                }
-            })
-        }
+        categories.find { category -> category.key.isNullOrBlank() }?.active = true
         val categoriesAdapter = CategoryAdapter(categories)
 
         recyclerView.layoutManager = GridLayoutManager(view.context, 2)
@@ -54,8 +43,8 @@ class CategoriesFragment: Fragment() {
         recyclerView.hasFixedSize()
         recyclerView.adapter = categoriesAdapter
 
-        activity?.setTitle(R.string.categories)
-        binding.nextButton.text = context?.getText(R.string.select_countries)
+        activity?.setTitle(R.string.category)
+        binding.nextButton.text = context?.getText(R.string.select_country)
         binding.nextButton.setOnClickListener {
             goToNextSelector()
         }
@@ -63,7 +52,8 @@ class CategoriesFragment: Fragment() {
 
     private fun goToNextSelector() {
         //Go To Countries Fragment
-        val result = categories.filter { category -> !category.key.isNullOrBlank() }
+        val result =
+            categories.find { category -> category.active } ?: Category(R.string.all, null, "")
         val mainActivity = activity as MainActivity
         mainActivity.changeFragment(CountriesFragment.newInstance(result))
     }

@@ -14,39 +14,23 @@ import com.mbds.bmp.newsletter.model.Article
 import com.mbds.bmp.newsletter.tools.setImageFromUrl
 import java.util.*
 
-class ArticleAdapter(val dataSet: MutableList<Article?>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ArticleAdapter(val dataSet: MutableList<Article>) :
+    RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
-    companion object {
-        private const val LOADING_ITEM = 0
-        private const val ARTICLE_ITEM = 1
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val rootView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_article, parent, false)
+
+        return ViewHolder(rootView)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == LOADING_ITEM) {
-            val rootView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_loading, parent, false)
-
-            return LoadingViewHolder(rootView)
-        } else {
-            val rootView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_article, parent, false)
-
-            return ArticleViewHolder(rootView)
-        }
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is ArticleViewHolder)
-            dataSet[position]?.let { holder.bind(it) }
+    override fun onBindViewHolder(holder: ArticleAdapter.ViewHolder, position: Int) {
+        holder.bind(dataSet[position])
     }
 
     override fun getItemCount() = dataSet.size
 
-    override fun getItemViewType(position: Int) =
-        if (dataSet[position] == null) LOADING_ITEM else ARTICLE_ITEM
-
-    class ArticleViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {
+    class ViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {
 
         internal val binding = ItemArticleBinding.bind(root)
 
@@ -72,7 +56,4 @@ class ArticleAdapter(val dataSet: MutableList<Article?>) :
             }
         }
     }
-
-    class LoadingViewHolder(root: View) : RecyclerView.ViewHolder(root)
-
 }

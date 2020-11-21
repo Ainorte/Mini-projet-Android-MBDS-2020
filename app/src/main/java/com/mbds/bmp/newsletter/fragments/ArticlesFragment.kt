@@ -15,10 +15,7 @@ import com.mbds.bmp.newsletter.adapters.ArticleAdapter
 import com.mbds.bmp.newsletter.databinding.FragmentArticlesBinding
 import com.mbds.bmp.newsletter.listener.ArticlesScrollListener
 import com.mbds.bmp.newsletter.model.Article
-import com.mbds.bmp.newsletter.model.Category
-import com.mbds.bmp.newsletter.model.Country
-import com.mbds.bmp.newsletter.model.Editor
-import com.mbds.bmp.newsletter.repositories.ArticleRepository
+import com.mbds.bmp.newsletter.services.ArticleService
 import com.mbds.bmp.newsletter.tools.isOnline
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,14 +23,12 @@ import kotlinx.coroutines.withContext
 
 class ArticlesFragment : Fragment() {
 
-    lateinit var binding: FragmentArticlesBinding
-    private var category: Category? = null
-    private var country: Country? = null
-    private var editor: Editor? = null
-    private val articleRepository = ArticleRepository()
+    private var articleService: ArticleService? = null
+    private lateinit var binding: FragmentArticlesBinding
     private val articleAdapter = ArticleAdapter(mutableListOf())
     private val articlesScrollListener = ArticlesScrollListener()
 
+    private var page = 1
     private var isLoading = false
 
     private var errorSnackBar: Snackbar? = null
@@ -41,12 +36,10 @@ class ArticlesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            category = it.getSerializable(ARG_CATEGORY) as Category
-            country = it.getSerializable(ARG_COUNTRY) as Country
-            editor = it.getSerializable(ARG_EDITOR) as Editor
+            articleService = it.getParcelable(ARG_ARTICLE_SERVICE) as ArticleService?
         }
 
-        activity?.setTitle(R.string.results)
+        activity?.setTitle(articleService?.getTitleId() ?: R.string.results)
     }
 
     override fun onCreateView(
@@ -74,8 +67,6 @@ class ArticlesFragment : Fragment() {
         if (!isLoading) {
             isLoading = true
             lifecycleScope.launch {
-                articleAdapter.dataSet.add(null)
-                articleAdapter.notifyItemInserted(articleAdapter.itemCount - 1)
                 binding.articlesView.removeOnScrollListener(articlesScrollListener)
                 getData()
             }
@@ -86,7 +77,7 @@ class ArticlesFragment : Fragment() {
         withContext(Dispatchers.IO)
         {
             if (context?.isOnline() == true) {
-                val result = articleRepository.list(category, country, editor)
+                val result = articleService?.getArticles(page)
                 if (result != null) {
                     bindData(result)
                 } else {
@@ -101,13 +92,13 @@ class ArticlesFragment : Fragment() {
     private suspend fun bindData(result: List<Article>) {
         withContext(Dispatchers.Main)
         {
-            articleAdapter.dataSet.removeLast()
-            articleAdapter.notifyItemRemoved(articleAdapter.itemCount)
-
             articleAdapter.dataSet.addAll(result)
             articleAdapter.notifyDataSetChanged()
 
-            binding.articlesView.addOnScrollListener(articlesScrollListener)
+            if (page < articleService?.getPageNumber() ?: 0) {
+                binding.articlesView.addOnScrollListener(articlesScrollListener)
+                page++
+            }
             isLoading = false
         }
     }
@@ -124,10 +115,6 @@ class ArticlesFragment : Fragment() {
                 launchQuery()
             }
             errorSnackBar?.show()
-
-            articleAdapter.dataSet.removeLast()
-            articleAdapter.notifyItemRemoved(articleAdapter.itemCount)
-            binding.articlesView.addOnScrollListener(articlesScrollListener)
             isLoading = false
         }
     }
@@ -140,23 +127,13 @@ class ArticlesFragment : Fragment() {
 
 
     companion object {
-        private const val ARG_CATEGORY = "category"
-        private const val ARG_COUNTRY = "country"
-        private const val ARG_EDITOR = "editor"
+        private const val ARG_ARTICLE_SERVICE = "articleService"
 
         @JvmStatic
-        fun newInstance(category: Category?, country: Country?, editor: Editor) =
+        fun newInstance(articleService: ArticleService) =
             ArticlesFragment().apply {
                 arguments = Bundle().apply {
-                    category.let {
-                        putSerializable(ARG_CATEGORY, it)
-                    }
-                    country.let {
-                        putSerializable(ARG_COUNTRY, it)
-                    }
-                    editor.let {
-                        putSerializable(ARG_EDITOR, it)
-                    }
+                    putParcelable(ARG_ARTICLE_SERVICE, articleService)
                 }
             }
     }

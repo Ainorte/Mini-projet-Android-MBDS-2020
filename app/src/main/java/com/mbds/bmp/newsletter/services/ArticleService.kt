@@ -1,11 +1,12 @@
 package com.mbds.bmp.newsletter.services
 
-import com.mbds.bmp.newsletter.model.ArticleNewsApiResponse
+import android.os.Parcelable
+import com.mbds.bmp.newsletter.model.Article
 
-interface ArticleService {
-    fun getArticles(
-        category: String,
-        country: String,
-        page: Int
-    ): retrofit2.Response<ArticleNewsApiResponse>
+interface ArticleService : Parcelable {
+    fun getArticles(page: Int): List<Article>?
+
+    fun getTitleId(): Int
+
+    fun getPageNumber(): Int
 }

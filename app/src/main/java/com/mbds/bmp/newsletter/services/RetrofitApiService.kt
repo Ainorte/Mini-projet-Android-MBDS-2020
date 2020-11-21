@@ -10,13 +10,22 @@ interface RetrofitApiService {
     //GET --> On lance une requête de type GET
     // everything est l'action du web service qu'on veut apeler
     // Elle sera concaténée avec l'url prédéfini dans retrofit
-    @GET("everything?sortBy=publishedAt")
-    fun list(
-        @Query("q") category: String = "",
-        @Query("page") page: Int,
-        @Query("language") language: String = "en"
+    @GET("top-headlines")
+    fun getArticles(
+        @Query("category") category: String = "",
+        @Query("country") country: String = "",
+        @Query("page") page: Int = 1,
+    ): Call<ArticleNewsApiResponse>
+
+    @GET("top-headlines")
+    fun getArticles(
+        @Query("sources") source: String = "",
+        @Query("page") page: Int = 1,
     ): Call<ArticleNewsApiResponse>
 
     @GET("sources")
-    fun editors(): Call<SourceNewsApiResponse>
+    fun getEditors(
+        @Query("category") category: String = "",
+        @Query("country") country: String = ""
+    ): Call<SourceNewsApiResponse>
 }
