@@ -22,4 +22,6 @@
     <string name="select_editors">Sélectionner les éditeurs</string>
     <string name="show_articles">Voir les articles</string>
     <string name="favorites">Favoris</string>
+    <string name="add_to_favorites">Ajouter aux favoris</string>
+    <string name="about_us">À propos de nous</string>
 </resources>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -36,9 +34,9 @@
         android:text="MAMANE LAWEL Sadio"
         android:textColor="#466964"
         android:textStyle="bold"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="120dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="120dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -47,20 +45,20 @@
         android:text="POITEVIN William"
         android:textColor="#466964"
         android:textStyle="bold"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="140dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="140dp" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:text="BOUREK Kamel"
-        android:textStyle="bold"
         android:textColor="#466964"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="160dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="160dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -68,9 +66,9 @@
         android:layout_height="58dp"
         android:autoLink="web"
         android:text="Lien vers le répo github du projet : https://github.com/Ainorte/Mini-projet-Android-MBDS-2020.git"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="195dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="195dp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -79,9 +77,9 @@
         android:text="Fonctionnalités de l'application :"
         android:textSize="20dp"
         android:textStyle="bold"
+        tools:ignore="MissingConstraints,MissingPrefix"
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="250dp"
-        tools:ignore="MissingConstraints,MissingPrefix" />
+        tools:layout_editor_absoluteY="250dp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -134,9 +132,9 @@ de données locale."
         android:text="Les librairies utilisées :"
         android:textSize="20dp"
         android:textStyle="bold"
+        tools:ignore="MissingConstraints,MissingPrefix"
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="510dp"
-        tools:ignore="MissingConstraints,MissingPrefix" />
+        tools:layout_editor_absoluteY="510dp" />
 
     <TextView
         android:id="@+id/textView13"
