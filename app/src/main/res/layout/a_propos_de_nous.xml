@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -24,7 +25,6 @@
         android:text="Membres du groupe :"
         android:textSize="20dp"
         android:textStyle="bold"
-
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="72dp" />
@@ -34,8 +34,9 @@
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:text="MAMANE LAWEL Sadio"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="60dp"
+        android:textColor="#466964"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="55dp"
         tools:layout_editor_absoluteY="120dp"
         tools:ignore="MissingConstraints" />
 
@@ -44,9 +45,10 @@
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:text="POITEVIN William"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="143dp"
+        android:textColor="#466964"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="140dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -54,9 +56,10 @@
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:text="BOUREK Kamel"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="163dp"
+        android:textStyle="bold"
+        android:textColor="#466964"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="160dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -65,8 +68,87 @@
         android:layout_height="58dp"
         android:autoLink="web"
         android:text="Lien vers le répo github du projet : https://github.com/Ainorte/Mini-projet-Android-MBDS-2020.git"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="195dp" />
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="195dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:text="Fonctionnalités de l'application :"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="250dp"
+        tools:ignore="MissingConstraints,MissingPrefix" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="299dp"
+        android:layout_height="62dp"
+        android:text="Page d'acceuil permettant de sélectionner les filtres de recherche
+à savoir (Catégorie, Pays et Éditeurs)."
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="290dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="299dp"
+        android:layout_height="58dp"
+        android:text="Une fois les critère sélectionnés, la recherche est effectuée
+et la liste des articles correspondants s'affiche."
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="352dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="299dp"
+        android:layout_height="47dp"
+        android:text="Lors du clique sur un article de la liste, une vue détaillée de l'article
+est alors affichée."
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="410dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="299dp"
+        android:layout_height="47dp"
+        android:text="Possibilité de sauvegarder des articles en favoris dans une base
+de données locale."
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="457dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:text="Les librairies utilisées :"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="510dp"
+        tools:ignore="MissingConstraints,MissingPrefix" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="298dp"
+        android:layout_height="70dp"
+        android:text="Retrofit, okhttp, Gson, Gson Converter, Retrofit Logger,
+Coroutines, Glide, nv-i18n, flagkit, Databinding, local storage,
+and optional Kotlin Extensions and Coroutines support for Room."
+        android:textColor="@color/black"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="551dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
