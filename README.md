@@ -15,9 +15,13 @@ Réalisation du mini projet Android pour le MBDS 2021
 ## Fonctionalités de l'application
 
 Page d'acceuil et sélection des filtres de recherche (Catégorie, Pays et Éditeurs).
+
 Recherche selon les filtres séléctionnés et affichage de la liste des articles correspondants.
+
 Affichage détaillé des articles et lien vers l'original.
+
 Ajout et suppresion des favoris depuis la listes des articles et dans le détails de l'article.
+
 Visualiation des favoris accessible depuis la toolbar.
 
 ## Librairies utilisées
