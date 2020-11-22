@@ -84,7 +84,7 @@ class ArticleOnlineService(
         })
     }
 
-    override fun getArticles(page: Int): List<Article>? {
+    override suspend fun getArticles(page: Int): List<Article>? {
         val result = if (editors.isNotEmpty()) {
             service.getArticles(editors.map { editor -> editor.id ?: "" }
                 .reduce { e1, e2 -> "$e1,$e2" }, page).execute()

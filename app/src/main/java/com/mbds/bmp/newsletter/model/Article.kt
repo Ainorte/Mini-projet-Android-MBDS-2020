@@ -1,8 +1,15 @@
 package com.mbds.bmp.newsletter.model
 
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import androidx.databinding.library.baseAdapters.BR
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.Ignore
 import java.io.Serializable
 import java.util.*
 
+@Entity(primaryKeys = ["author", "title"])
 data class Article(
     val author: String,
     val title: String,
@@ -11,8 +18,16 @@ data class Article(
     val urlToImage: String?,
     val publishedAt: Date,
     val content: String,
-    val source: Source
-): Serializable {
+    @Embedded val source: Source
+) : BaseObservable(), Serializable {
+
+    @Ignore
+    @get:Bindable
+    var isFavorite = false
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.favorite)
+        }
 
     data class Source(val id: String?, val name: String) : Serializable
 }

@@ -21,4 +21,5 @@
     <string name="select_country">Sélectionner le pays</string>
     <string name="select_editors">Sélectionner les éditeurs</string>
     <string name="show_articles">Voir les articles</string>
+    <string name="favorites">Favoris</string>
 </resources>
