@@ -5,19 +5,28 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
+import com.mbds.bmp.newsletter.database.ArticleRoomDatabase
 import com.mbds.bmp.newsletter.databinding.FragmentArticleBinding
 import com.mbds.bmp.newsletter.model.Article
+import com.mbds.bmp.newsletter.services.FavoriteService
 import com.mbds.bmp.newsletter.tools.getCleanContent
 import com.mbds.bmp.newsletter.tools.setImageFromUrl
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ArticleFragment : Fragment() {
     private var article: Article? = null
     private lateinit var binding: FragmentArticleBinding
+    private lateinit var favoriteService: FavoriteService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +40,26 @@ class ArticleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentArticleBinding.inflate(inflater, container, false)
+        favoriteService =
+            FavoriteService(ArticleRoomDatabase.getDatabase(binding.root.context).articleDao())
 
+        setData()
+
+        val activity = activity as MainActivity
+        activity.setMenuVisible(true)
+        if (article?.isFavorite != false) {
+            activity.changeFavoriteIcon(R.drawable.ic_delete_favorite)
+        } else {
+            activity.changeFavoriteIcon(R.drawable.ic_add_favorite)
+        }
+        activity.onFavoriteClick = { menu ->
+            updateFavoriteStatus(menu)
+        }
+
+        return binding.root
+    }
+
+    private fun setData() {
         if (article?.author.isNullOrBlank()) {
             //Hide author data
             binding.author.visibility = View.INVISIBLE
@@ -75,8 +103,42 @@ class ArticleFragment : Fragment() {
             R.drawable.placeholder_large,
             binding.root
         )
+    }
 
-        return binding.root
+    private fun updateFavoriteStatus(menu: Menu): Boolean {
+        val activity = activity as MainActivity
+        if (article != null) {
+            if (article!!.isFavorite) {
+                article!!.isFavorite = false
+                activity.changeFavoriteIcon(R.drawable.ic_add_favorite)
+                lifecycleScope.launch {
+                    delFav(article!!)
+                }
+            } else {
+                article!!.isFavorite = true
+                activity.changeFavoriteIcon(R.drawable.ic_delete_favorite)
+                lifecycleScope.launch {
+                    addFav(article!!)
+                }
+            }
+            return true
+        }
+        return false
+    }
+
+
+    private suspend fun addFav(article: Article) {
+        withContext(Dispatchers.IO)
+        {
+            favoriteService.add(article)
+        }
+    }
+
+    private suspend fun delFav(article: Article) {
+        withContext(Dispatchers.IO)
+        {
+            favoriteService.delete(article)
+        }
     }
 
     companion object {
@@ -90,5 +152,13 @@ class ArticleFragment : Fragment() {
                     putSerializable(ARG_ARTICLE, article)
                 }
             }
+    }
+
+
+    override fun onDestroy() {
+        val activity = activity as MainActivity
+        activity.changeFavoriteIcon(R.drawable.ic_favorite_white)
+        activity.onFavoriteClick = null
+        super.onDestroy()
     }
 }

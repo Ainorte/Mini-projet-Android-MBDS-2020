@@ -6,18 +6,20 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import java.io.Serializable
 import java.util.*
 
-@Entity(primaryKeys = ["author", "title"])
+@Entity
 data class Article(
-    val author: String,
+    val author: String?,
     val title: String,
     val description: String,
+    @PrimaryKey
     val url: String,
     val urlToImage: String?,
     val publishedAt: Date,
-    val content: String,
+    val content: String?,
     @Embedded val source: Source
 ) : BaseObservable(), Serializable {
 

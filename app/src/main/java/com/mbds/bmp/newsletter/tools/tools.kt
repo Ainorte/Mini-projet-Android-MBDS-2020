@@ -23,4 +23,4 @@ fun Context.isOnline(): Boolean {
     return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
 }
 
-fun Article.getCleanContent() = content.replace(Regex("\\[\\+[0-9]+ chars]$"), "")
+fun Article.getCleanContent() = content?.replace(Regex("\\[\\+[0-9]+ chars]$"), "")

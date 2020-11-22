@@ -5,7 +5,7 @@ import com.mbds.bmp.newsletter.model.Article
 
 class FavoriteService(private val articleDao: ArticleDao) {
     fun exist(article: Article): Boolean {
-        val result = articleDao.searchArticle(article.author, article.title)
+        val result = articleDao.searchArticle(article.url)
         return result != null
     }
 

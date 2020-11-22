@@ -138,4 +138,6 @@ class ArticleOnlineService(
         }
     }
 
+    override val isFavorite: Boolean = false
+
 }

@@ -35,5 +35,5 @@ class ArticleOfflineService(private val articleDao: ArticleDao) : ArticleService
         }
     }
 
-
+    override val isFavorite: Boolean = true
 }

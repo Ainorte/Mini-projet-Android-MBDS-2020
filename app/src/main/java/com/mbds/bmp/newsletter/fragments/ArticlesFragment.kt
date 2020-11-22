@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import com.mbds.bmp.newsletter.MainActivity
 import com.mbds.bmp.newsletter.R
 import com.mbds.bmp.newsletter.adapters.ArticleAdapter
 import com.mbds.bmp.newsletter.database.ArticleRoomDatabase
@@ -64,8 +65,9 @@ class ArticlesFragment : Fragment() {
             launchQuery()
         }
 
-        launchQuery()
+        manageToolbar()
 
+        launchQuery()
         return binding.root
     }
 
@@ -156,9 +158,18 @@ class ArticlesFragment : Fragment() {
         }
     }
 
+    private fun manageToolbar() {
+        if (articleService?.isFavorite != false) {
+            val activity = activity as MainActivity
+            activity.setFavoriteVisible(false)
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
+        val activity = activity as MainActivity
+        activity.setMenuVisible(true)
         errorSnackBar?.dismiss()
     }
 

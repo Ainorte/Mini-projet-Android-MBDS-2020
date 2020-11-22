@@ -9,4 +9,6 @@ interface ArticleService : Parcelable {
     fun getTitleId(): Int
 
     fun getPageNumber(): Int
+
+    val isFavorite: Boolean
 }

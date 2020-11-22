@@ -12,8 +12,8 @@ interface ArticleDao : Serializable {
     @Query("SELECT * FROM article ORDER BY publishedAt DESC")
     fun getArticles(): List<Article>
 
-    @Query("SELECT * FROM article WHERE author = :author AND title = :title LIMIT 1")
-    fun searchArticle(author: String, title: String): Article?
+    @Query("SELECT * FROM article WHERE url = :url LIMIT 1")
+    fun searchArticle(url: String): Article?
 
     @Insert
     fun insertArticle(vararg article: Article)
