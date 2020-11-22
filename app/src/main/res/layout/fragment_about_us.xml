@@ -1,152 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="300dp"
+        android:layout_width="336dp"
         android:layout_height="48dp"
+        android:layout_marginTop="16dp"
         android:text="À propos de nous"
         android:textAlignment="center"
         android:textColor="#5770BE"
         android:textSize="30dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="16dp" />
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="336dp"
         android:layout_height="35dp"
+        android:layout_marginTop="16dp"
         android:text="Membres du groupe :"
+        android:textAlignment="center"
         android:textSize="20dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="72dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="300dp"
+        android:layout_width="336dp"
         android:layout_height="20dp"
+        android:layout_marginTop="16dp"
         android:text="MAMANE LAWEL Sadio"
         android:textColor="#466964"
+
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="120dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="300dp"
+        android:layout_width="336dp"
         android:layout_height="20dp"
+        android:layout_marginTop="16dp"
         android:text="POITEVIN William"
         android:textColor="#466964"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="140dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="300dp"
+        android:layout_width="336dp"
         android:layout_height="20dp"
+        android:layout_marginTop="16dp"
         android:text="BOUREK Kamel"
         android:textColor="#466964"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="160dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="353dp"
+        android:layout_width="336dp"
         android:layout_height="58dp"
+        android:layout_marginTop="16dp"
         android:autoLink="web"
         android:text="Lien vers le répo github du projet : https://github.com/Ainorte/Mini-projet-Android-MBDS-2020.git"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="195dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="350dp"
+        android:layout_width="336dp"
         android:layout_height="30dp"
+        android:layout_marginTop="16dp"
         android:text="Fonctionnalités de l'application :"
+        android:textAlignment="center"
         android:textSize="20dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints,MissingPrefix"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="250dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="MissingConstraints,MissingPrefix" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="299dp"
+        android:layout_width="336dp"
         android:layout_height="62dp"
+        android:layout_marginTop="16dp"
         android:text="Page d'acceuil permettant de sélectionner les filtres de recherche
 à savoir (Catégorie, Pays et Éditeurs)."
         android:textColor="@color/black"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="290dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="299dp"
+        android:layout_width="336dp"
         android:layout_height="58dp"
+        android:layout_marginTop="16dp"
         android:text="Une fois les critère sélectionnés, la recherche est effectuée
 et la liste des articles correspondants s'affiche."
         android:textColor="@color/black"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="352dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="299dp"
+        android:layout_width="336dp"
         android:layout_height="47dp"
+        android:layout_marginTop="16dp"
         android:text="Lors du clique sur un article de la liste, une vue détaillée de l'article
 est alors affichée."
         android:textColor="@color/black"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="410dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="299dp"
+        android:layout_width="336dp"
         android:layout_height="47dp"
+        android:layout_marginTop="16dp"
         android:text="Possibilité de sauvegarder des articles en favoris dans une base
 de données locale."
         android:textColor="@color/black"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="457dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="350dp"
+        android:layout_width="336dp"
         android:layout_height="30dp"
+        android:layout_marginTop="16dp"
         android:text="Les librairies utilisées :"
         android:textSize="20dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints,MissingPrefix"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="510dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        tools:ignore="MissingConstraints,MissingPrefix" />
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="298dp"
+        android:layout_width="336dp"
         android:layout_height="70dp"
+        android:layout_marginTop="120dp"
         android:text="Retrofit, okhttp, Gson, Gson Converter, Retrofit Logger,
 Coroutines, Glide, nv-i18n, flagkit, Databinding, local storage,
 and optional Kotlin Extensions and Coroutines support for Room."
         android:textColor="@color/black"
-        tools:ignore="DuplicateIds,MissingConstraints"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="551dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        tools:ignore="DuplicateIds,MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
